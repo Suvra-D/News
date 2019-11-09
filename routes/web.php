@@ -20,3 +20,11 @@ Route::get('/','HomeController@index');
 Route::get('/category','CategoryController@index');
 
 Route::get('/single','SingleController@index');
+
+Route::group(['prefix'=>'back'],function() {
+    Route::get('/','Admin\DashboardController@index');
+
+    Route::get('/category','Admin\CategoryController@index');
+    Route::get('/category/create','Admin\CategoryController@create');
+    Route::get('/category/edit','Admin\CategoryController@edit');
+});
