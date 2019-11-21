@@ -16,6 +16,7 @@
     <!-- <link rel="stylesheet" href="assets/css/bootstrap-select.less"> -->
     <link rel="stylesheet" href="{{ asset('public/admin/assets/scss/style.css') }}">
     <link href="{{ asset('public/admin/assets/css/lib/vector-map/jqvmap.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('public/admin/assets/css/lib/chosen/chosen.min.css') }}">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
