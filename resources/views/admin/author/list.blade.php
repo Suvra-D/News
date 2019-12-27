@@ -38,7 +38,7 @@
                     @endif
                         <div class="card-header">
                             <strong class="card-title">{{ $page_name }}</strong>
-                            <a href="{{ url('/back/permission/create') }}" class="btn btn-primary pull-right">Create</a>
+                            <a href="{{ url('/back/author/create') }}" class="btn btn-primary pull-right">Create</a>
                         </div>
                         <div class="card-body">
                   <table id="bootstrap-data-table" class="table table-striped table-bordered">
@@ -46,21 +46,29 @@
                       <tr>
                         <th>#</th>
                         <th>Name</th>
-                        <th>Display Name</th>
-                        <th>Description</th>
+                        <th>Email</th>
+                        <th>Role</th>
                         <th>Option</th>
                       </tr>
                     </thead>
                     <tbody>
-                      @foreach($data as $i=>$row)
+                      @foreach($author_data as $i=>$row)
                       <tr>
                         <td>{{ ++$i }}</td>
                         <td>{{ $row->name }}</td>
-                        <td>{{ $row->display_name }}</td>
-                        <td>{{ $row->description }}</td>
+                        <td>{{ $row->email }}</td>
                         <td>
-                            <a href={{ url('/back/permission/edit/'.$row->id) }} class="btn btn-warning">Edit</a>
-                            {{ Form::open(['method'=>'DELETE','url'=>['/back/permission/delete/'.$row->id],'style'=>'display:inline']) }}
+                            @if($row->roles()->get())
+                                <ul style="padding: 20px; margin-bottom: 20px;">
+                                    @foreach($row->roles()->get() as $role)
+                                        <li>{{ $role->name }}</li>
+                                    @endforeach
+                                </ul>
+                            @endif
+                        </td>
+                        <td>
+                            <a href={{ url('/back/author/edit/'.$row->id) }} class="btn btn-warning">Edit</a>
+                            {{ Form::open(['method'=>'DELETE','url'=>['/back/author/delete/'.$row->id],'style'=>'display:inline']) }}
                             {{ Form::submit('Delete',['class'=>'btn btn-danger']) }}
                             {{ Form::close() }}
                         </td>

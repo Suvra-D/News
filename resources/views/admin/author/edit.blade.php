@@ -4,8 +4,9 @@
 
 <link rel="stylesheet" href="{{ asset('public/admin/assets/css/lib/chosen/chosen.min.css') }}">
 <script src="{{ asset('public/admin/assets/js/lib/chosen/chosen.jquery.min.js') }}"></script>
+
 <script>
-    jQuery(document).ready(function(){
+    jQuery(document).ready(function() {
         jQuery(".myselect").chosen({
             disable_search_threshold: 10,
             no_results_text: "Oops, Nothing Found!",
@@ -17,14 +18,14 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <strong class="card-title">{{ $rolepage_create }}</strong>
+                            <strong class="card-title">{{ $page_name }}</strong>
                         </div>
                         <div class="card-body">
                           <!-- Credit Card -->
                           <div id="pay-invoice">
                               <div class="card-body">
                                   <div class="card-title">
-                                      <h3 class="text-center">{{ $rolepage_create }}</h3>
+                                      <h3 class="text-center">{{ $page_name }}</h3>
                                   </div>
                                   <hr>
 
@@ -37,8 +38,7 @@
                                           </ul>
                                       </div>
                                   @endif
-
-                                  {{ Form::open(['url' => 'back/role/store','method'=>'post']) }}
+                                  {{ Form::model($author,['route'=>['author-update',$author->id], 'method'=>'put']) }}
 
                                       <div class="form-group">
                                           {{ Form::label('name', 'Name', ['class' => 'control-label mb-1']) }}
@@ -46,25 +46,24 @@
                                           {{ Form::text('name', null, ['class'=>'form-control','id'=>'name']) }}
                                       </div>
                                       <div class="form-group">
-                                          {{ Form::label('display_name', 'Display Name', ['class' => 'control-label mb-1']) }}
+                                          {{ Form::label('email', 'Email', ['class' => 'control-label mb-1']) }}
 
-                                          {{ Form::text('display_name', null, ['class'=>'form-control','id'=>'display_name']) }}
+                                          {{ Form::text('email', null, ['class'=>'form-control','id'=>'email']) }}
                                       </div>
                                       <div class="form-group">
-                                          {{ Form::label('description', 'Description', ['class' => 'control-label mb-1']) }}
+                                          {{ Form::label('password', 'Password', ['class' => 'control-label mb-1']) }}
 
-                                          {{ Form::textarea('description', null, ['class'=>'form-control','id'=>'description']) }}
+                                          {{ Form::text('password', null, ['class'=>'form-control','id'=>'password']) }}
                                       </div>
                                       <div class="form-group">
-                                          {{ Form::label('permission', 'Permission', ['class' => 'control-label mb-1']) }}
-
-                                          {{ Form::select('permission[]',$role_permission, null, ['class'=>'form-control myselect' ,'placeholder'=>'Select Permissions','multiple']) }}
+                                          {{ Form::label('roles','Roles',['class'=>'form-control mb-1']) }}
+                                          {{ Form::select('roles[]',$roles,$selectedroles,['class'=>'form-control myselect','placeholder'=>'Selected Roles']) }}
                                       </div>
 
                                       <div>
                                           <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
                                               <i class="fa fa-lock fa-lg"></i>&nbsp;
-                                              <span id="payment-button-amount">Submit</span>
+                                              <span id="payment-button-amount">Update</span>
                                               <span id="payment-button-sending" style="display:none;">Sendingâ€¦</span>
                                           </button>
                                       </div>

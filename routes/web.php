@@ -17,16 +17,10 @@ Route::get('/welcome', function () {
 
 Route::get('/','HomeController@index');
 
-/*Route::get('/category','CategoryController@index');*/
-
 Route::get('/single','SingleController@index');
 
 Route::group(['prefix'=>'back','middleware'=>'auth'],function() {
     Route::get('/','Admin\DashboardController@index');
-
-    Route::get('/category','Admin\CategoryController@index');
-    Route::get('/category/create','Admin\CategoryController@create');
-    Route::get('/category/edit','Admin\CategoryController@edit');
 
     Route::get('/permission','Admin\PermissionController@index');
     Route::get('/permission/create','Admin\PermissionController@create');
@@ -41,10 +35,22 @@ Route::group(['prefix'=>'back','middleware'=>'auth'],function() {
     Route::get('/role/edit/{id}',['uses'=>'Admin\RoleController@edit','as'=>'role-edit']);
     Route::put('/role/edit/{id}',['uses'=>'Admin\RoleController@update','as'=>'role-update']);
     Route::delete('/role/delete/{id}','Admin\RoleController@destroy');
+
+    Route::get('/author','Admin\AuthorController@index');
+    Route::get('/author/create','Admin\AuthorController@create');
+    Route::post('/author/store','Admin\AuthorController@store');
+    Route::get('/author/edit/{id}','Admin\AuthorController@edit');
+    Route::put('/author/edit/{id}',['uses'=>'Admin\AuthorController@update','as'=>'author-update']);
+    Route::delete('/author/delete/{id}','Admin\AuthorController@destroy');
+
+    Route::get('/category','Admin\CategoryController@index');
+    Route::get('/category/create','Admin\CategoryController@create');
+    Route::post('/category/store','Admin\CategoryController@store');
+    Route::put('/category/status/{id}','Admin\CategoryController@status');
 });
 Route::get('/query','DbController@index');
 Route::get('/joining','DbController@joining');
 
 Auth::routes();
 
-/*Route::get('/home', 'HomeController@index')->name('home');*/
+

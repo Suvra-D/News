@@ -18,7 +18,13 @@
                         <a href="{{ url('/back/permission') }}"> <i class="menu-icon fa fa-laptop"></i>Permission </a>
                     </li>
                     <li class="active">
-                        <a href="{{ url('/back/role') }}"> <i class="menu-icon fa fa-laptop"></i>Role </a>
+                        <a href="{{ url('/back/category') }}"> <i class="menu-icon fa fa-ellipsis-v"></i>Categories </a>
+                    </li>
+                    <li class="active">
+                        <a href="{{ url('/back/role') }}"> <i class="menu-icon fa fa-book"></i>Role </a>
+                    </li>
+                    <li class="active">
+                        <a href="{{ url('/back/author') }}"> <i class="menu-icon fa fa-address-book-o"></i>Author </a>
                     </li>
                     <h3 class="menu-title">UI elements</h3><!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">
