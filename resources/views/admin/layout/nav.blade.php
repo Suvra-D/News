@@ -26,6 +26,9 @@
                     <li class="active">
                         <a href="{{ url('/back/author') }}"> <i class="menu-icon fa fa-address-book-o"></i>Author </a>
                     </li>
+                    <li class="active">
+                        <a href="{{ url('/back/post') }}"> <i class="menu-icon fa fa-file-powerpoint-o"></i>Posts </a>
+                    </li>
                     <h3 class="menu-title">UI elements</h3><!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Components</a>

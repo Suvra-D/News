@@ -47,6 +47,16 @@ Route::group(['prefix'=>'back','middleware'=>'auth'],function() {
     Route::get('/category/create','Admin\CategoryController@create');
     Route::post('/category/store','Admin\CategoryController@store');
     Route::put('/category/status/{id}','Admin\CategoryController@status');
+
+    Route::get('/post','Admin\PostController@index');
+    Route::get('/post/create','Admin\PostController@create');
+    Route::post('/post/store','Admin\PostController@store');
+    Route::put('/post/status/{id}','Admin\PostController@status');
+    Route::delete('/post/delete/{id}','Admin\PostController@destroy');
+
+    Route::get('/comment/{id}','Admin\CommentController@index');
+    Route::get('/comment/reply/{id}','Admin\CommentController@create');
+    Route::post('/comment/reply','Admin\CommentController@store');
 });
 Route::get('/query','DbController@index');
 Route::get('/joining','DbController@joining');
